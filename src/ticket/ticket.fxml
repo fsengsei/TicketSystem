@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ticket.ticket">
+   <children>
+      <TextField fx:id="nameTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="321.0" promptText="Name" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <TextArea fx:id="DescTextField" layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="579.0" promptText="Desc" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="69.0" />
+      <Button fx:id="createButton" layoutX="23.0" layoutY="342.0" mnemonicParsing="false" onAction="#createonClick" text="Erstellen" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="342.0" />
+      <Button fx:id="deleteButton" layoutX="140.0" layoutY="342.0" mnemonicParsing="false" onAction="#deleteonClick" text="Löschen" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="342.0" />
+      <ComboBox fx:id="priority_idComboBox" layoutX="9.0" layoutY="283.0" prefWidth="150.0" promptText="priority_id" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="283.0" />
+      <ComboBox fx:id="status_idComboBox" layoutX="208.0" layoutY="283.0" prefWidth="150.0" promptText="status_id" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="283.0" />
+      <ComboBox fx:id="order_idComboBox" layoutX="411.0" layoutY="283.0" prefWidth="150.0" promptText="order_id" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="283.0" />
+   </children>
+</AnchorPane>

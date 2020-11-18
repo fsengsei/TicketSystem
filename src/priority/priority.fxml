@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="priority.priority">
+   <children>
+      <TextField fx:id="priorityTextField" layoutX="27.0" layoutY="14.0" promptText="Priorität" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="14.0" />
+      <Button fx:id="sendButton" layoutX="27.0" layoutY="66.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="66.0" />
+      <Button fx:id="deleteButton" layoutX="126.0" layoutY="66.0" mnemonicParsing="false" onAction="#delteonClick" text="Löschen" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="66.0" />
+   </children>
+</AnchorPane>

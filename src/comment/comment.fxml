@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comment.Comment">
+   <children>
+      <TextField fx:id="titleTextField" layoutX="14.0" layoutY="23.0" promptText="title" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="23.0" />
+      <TextArea fx:id="textTextField" layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="582.0" promptText="text" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="57.0" />
+      <DatePicker fx:id="datepicker" layoutX="7.0" layoutY="262.0" promptText="datepicker" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="262.0" />
+      <ComboBox fx:id="user_idComboBox" layoutX="200.0" layoutY="262.0" prefWidth="150.0" promptText="user_id" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="262.0" />
+      <ComboBox fx:id="ticket_idComboBox" layoutX="396.0" layoutY="262.0" prefWidth="150.0" promptText="ticket_id" AnchorPane.leftAnchor="396.0" AnchorPane.topAnchor="262.0" />
+      <Button fx:id="SendButton" layoutX="30.0" layoutY="330.0" mnemonicParsing="false" onAction="#SendonClick" text="Senden" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="330.0" />
+      <Button fx:id="delteButton" layoutX="181.0" layoutY="330.0" mnemonicParsing="false" onAction="#delteonClick" text="Löschen" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="330.0" />
+   </children>
+</AnchorPane>
