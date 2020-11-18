@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="department.Department">
+<AnchorPane prefHeight="146.0" prefWidth="191.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="department.Department">
    <children>
-      <TextField fx:id="departmentTextField" layoutX="14.0" layoutY="23.0" promptText="Department" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="23.0" />
-      <Button fx:id="SendButton" layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#sendonclick" text="Senden" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="71.0" />
-      <Button fx:id="deletebutton" layoutX="140.0" layoutY="71.0" mnemonicParsing="false" onAction="#deleteonCLick" text="Löschen" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="71.0" />
+      <Label layoutX="4.0" layoutY="29.0" text="Abteilung:" />
+      <Button fx:id="SendButton" layoutX="4.0" layoutY="61.0" mnemonicParsing="false" onAction="#sendonclick" text="Save" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="61.0" />
+      <Button fx:id="deletebutton" layoutX="125.0" layoutY="61.0" mnemonicParsing="false" onAction="#deleteonCLick" text="Löschen" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="61.0" />
+      <TextField fx:id="departmentTextField" layoutX="60.0" layoutY="25.0" promptText="Department" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>
