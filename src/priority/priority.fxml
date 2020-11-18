@@ -4,10 +4,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="priority.priority">
+<AnchorPane prefHeight="95.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="priority.priority">
    <children>
-      <TextField fx:id="priorityTextField" layoutX="27.0" layoutY="14.0" promptText="Priorität" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="14.0" />
-      <Button fx:id="sendButton" layoutX="27.0" layoutY="66.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="66.0" />
-      <Button fx:id="deleteButton" layoutX="126.0" layoutY="66.0" mnemonicParsing="false" onAction="#delteonClick" text="Löschen" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="66.0" />
+      <TextField fx:id="priorityTextField" layoutX="27.0" layoutY="14.0" prefWidth="408.0" promptText="Priorität" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button fx:id="sendButton" layoutX="289.0" layoutY="54.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="92.0" />
+      <Button fx:id="deleteButton" layoutX="363.0" layoutY="54.0" mnemonicParsing="false" onAction="#delteonClick" text="Löschen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="order.order">
+<AnchorPane prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="order.order">
    <children>
-      <TextField fx:id="nameTextField" layoutX="14.0" layoutY="24.0" promptText="Name" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="24.0" />
-      <TextArea fx:id="descTextField" layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="584.0" promptText="Desc" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="69.0" />
-      <Button fx:id="sendButton" layoutX="29.0" layoutY="305.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="305.0" />
-      <Button fx:id="deleteButton" layoutX="193.0" layoutY="305.0" mnemonicParsing="false" onAction="#deleteonCLick" text="Löschen" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="305.0" />
+      <TextField fx:id="nameTextField" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="572.0" promptText="Auftrag" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <TextArea fx:id="descTextField" layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="584.0" promptText="Beschreibung" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="48.0" />
+      <Button fx:id="sendButton" layoutX="453.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="91.0" />
+      <Button fx:id="deleteButton" layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteonCLick" text="Löschen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>
