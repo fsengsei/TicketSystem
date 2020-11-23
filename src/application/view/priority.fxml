@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="95.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="priority.priority">
+<AnchorPane prefHeight="95.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.priority">
    <children>
       <TextField fx:id="priorityTextField" layoutX="27.0" layoutY="14.0" prefWidth="408.0" promptText="Priorität" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Button fx:id="sendButton" layoutX="289.0" layoutY="54.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="92.0" />

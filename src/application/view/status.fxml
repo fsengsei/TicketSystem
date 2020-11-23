@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="102.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="status.status">
+<AnchorPane prefHeight="102.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.status">
    <children>
       <TextField fx:id="statusTextField" layoutX="12.0" layoutY="14.0" prefHeight="25.0" prefWidth="408.0" promptText="Status" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Button fx:id="SendButtom" layoutX="293.0" layoutY="62.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="86.0" />

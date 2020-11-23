@@ -1,4 +1,4 @@
-package ticket;
+package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

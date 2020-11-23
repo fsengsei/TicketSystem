@@ -1,4 +1,4 @@
-package department;
+package application.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
