@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.MyFXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -121,5 +122,15 @@ public class Controller {
         } catch (IOException e) {
 
         }
+    }
+
+    public void editStatiClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/status.fxml", "Stati bearbeiten");
+    }
+
+    public void editPrioritiesClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/priority.fxml", "Prioritäten bearbeiten");
     }
 }

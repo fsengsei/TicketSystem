@@ -23,10 +23,10 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/scene.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        MyFXMLLoader.setPrimaryStage((primaryStage));
+
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/scene.fxml", "Ticketsystem");
     }
 
     public static void main(String[] args) {
