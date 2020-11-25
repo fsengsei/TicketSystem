@@ -13,9 +13,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class priority {
-    public Button deleteButton;
-    public Button sendButton;
+public class priorityController {
+    public Button closeButton;
+    public Button saveButton;
     public TextField priorityTextField;
     public ListView<Priority> priorityList;
     ObservableList<Priority> list = FXCollections.observableArrayList();
@@ -61,9 +61,9 @@ public class priority {
         }
     }
 
-    public void deletonClick(ActionEvent actionEvent) {
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 
-    public void sendonCLick(ActionEvent actionEvent) {
+    public void closeOnClick(ActionEvent actionEvent) {
     }
 }

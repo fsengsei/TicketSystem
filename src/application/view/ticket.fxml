@@ -10,8 +10,8 @@
    <children>
       <TextField fx:id="nameTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="579.0" promptText="Name" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <TextArea fx:id="DescTextField" layoutX="14.0" layoutY="50.0" prefHeight="200.0" prefWidth="579.0" promptText="Beschreibung" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0" />
-      <Button fx:id="createButton" layoutX="450.0" layoutY="361.0" mnemonicParsing="false" onAction="#createonClick" text="Erstellen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="89.0" />
-      <Button fx:id="deleteButton" layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteonClick" text="Löschen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button fx:id="saveButton" layoutX="436.0" layoutY="320.0" mnemonicParsing="false" onAction="#saveOnClick" text="Speichern" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="95.0" />
+      <Button fx:id="closeButton" layoutX="526.0" layoutY="361.0" mnemonicParsing="false" onAction="#closeOnClick" text="Abbrechen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <ComboBox fx:id="priority_idComboBox" layoutX="436.0" layoutY="258.0" prefWidth="150.0" promptText="priority_id" AnchorPane.leftAnchor="436.0" AnchorPane.topAnchor="258.0" />
       <ComboBox fx:id="status_idComboBox" layoutX="229.0" layoutY="258.0" prefWidth="150.0" promptText="status_id" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="258.0" />
       <ComboBox fx:id="order_idComboBox" layoutX="14.0" layoutY="258.0" prefWidth="150.0" promptText="order_id" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="258.0" />

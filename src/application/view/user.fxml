@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="279.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.user">
+<AnchorPane prefHeight="264.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.user">
    <children>
       <TextField fx:id="nameTextField" layoutX="21.0" layoutY="14.0" prefHeight="25.0" prefWidth="184.0" promptText="name" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="14.0" />
       <TextField fx:id="titleTextField" layoutX="245.0" layoutY="14.0" prefHeight="25.0" prefWidth="184.0" promptText="title" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="14.0" />
@@ -14,7 +14,7 @@
       <TextField fx:id="CityTextField" layoutX="21.0" layoutY="117.0" prefHeight="25.0" prefWidth="184.0" promptText="city" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="117.0" />
       <TextField fx:id="CountryTextField" layoutX="245.0" layoutY="117.0" prefHeight="25.0" prefWidth="184.0" promptText="country" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="117.0" />
       <ComboBox fx:id="departmentComboBox" layoutX="21.0" layoutY="165.0" prefWidth="150.0" promptText="department" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="165.0" />
-      <Button fx:id="SendButtom" layoutX="21.0" layoutY="225.0" mnemonicParsing="false" onAction="#SendonCLick" text="Save" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="225.0" />
-      <Button fx:id="DeleteButton" layoutX="170.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteonCLick" text="Löschen" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="225.0" />
+      <Button fx:id="SaveButtom" layoutX="268.0" layoutY="225.0" mnemonicParsing="false" onAction="#saveOnClick" text="Speichern" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+      <Button fx:id="CloseButton" layoutX="355.0" layoutY="225.0" mnemonicParsing="false" onAction="#closeOnCLick" text="Abbrechen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

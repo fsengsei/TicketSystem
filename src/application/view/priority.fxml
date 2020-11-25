@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="179.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.priority">
+<AnchorPane prefHeight="179.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.priorityController">
    <children>
-      <TextField fx:id="priorityTextField" layoutX="145.0" layoutY="14.0" onMouseClicked="#priorityListClicked" prefHeight="25.0" prefWidth="278.0" promptText="Priorität" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <Button fx:id="sendButton" layoutX="289.0" layoutY="54.0" mnemonicParsing="false" onAction="#sendonCLick" text="Senden" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="92.0" />
-      <Button fx:id="deleteButton" layoutX="363.0" layoutY="54.0" mnemonicParsing="false" onAction="#deletonClick" text="Löschen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <ListView fx:id="priorityList" prefHeight="245.0" prefWidth="131.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <TextField fx:id="priorityTextField" layoutX="145.0" layoutY="14.0" prefHeight="25.0" prefWidth="278.0" promptText="Priorität" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button fx:id="saveButton" layoutX="270.0" layoutY="140.0" mnemonicParsing="false" onAction="#saveOnClick" text="Speichern" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="98.0" />
+      <Button fx:id="closeButton" layoutX="363.0" layoutY="54.0" mnemonicParsing="false" onAction="#closeOnClick" text="Abbrechen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <ListView fx:id="priorityList" onMouseClicked="#priorityListClicked" prefHeight="245.0" prefWidth="131.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
