@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -132,5 +133,9 @@ public class Controller {
     public void editPrioritiesClicked(ActionEvent actionEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
         loader.loadFXML("view/priority.fxml", "Prioritäten bearbeiten");
+    }
+
+    public void closeProgramClicked(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }
