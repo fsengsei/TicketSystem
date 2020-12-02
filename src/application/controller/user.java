@@ -13,12 +13,12 @@ public class user {
     public TextField CityTextField;
     public ComboBox departmentComboBox;
     public TextField CountryTextField;
-    public Button SendButtom;
-    public Button DeleteButton;
+    public Button SaveButtom;
+    public Button CloseButton;
 
-    public void SendonCLick(ActionEvent actionEvent) {
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 
-    public void deleteonCLick(ActionEvent actionEvent) {
+    public void closeOnCLick(ActionEvent actionEvent) {
     }
 }

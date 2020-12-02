@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,9 +16,9 @@ import java.io.IOException;
 
 public class statuscontroller {
     public TextField statusTextField;
-    public Button deleteButton;
-    public Button SendButtom;
     public ListView<Status> listview;
+    public Button saveButton;
+    public Button closeButton;
 
     ObservableList<Status> list = FXCollections.observableArrayList();
 
@@ -52,12 +53,6 @@ public class statuscontroller {
         listview.setItems(list);
     }
 
-    public void deleteonCLick(ActionEvent actionEvent) {
-    }
-
-    public void sendonCLick(ActionEvent actionEvent) {
-    }
-
     public void listviewclicked(MouseEvent mouseEvent) {
         Status selected = listview.getSelectionModel().getSelectedItem();
 
@@ -66,6 +61,14 @@ public class statuscontroller {
 
             statusTextField.setText(selected.stati);
         }
+    }
+
+    public void saveOnClick(ActionEvent actionEvent) {
+    }
+
+    public void closeOnClick(ActionEvent actionEvent) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }
 

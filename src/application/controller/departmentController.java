@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Department;
 import application.model.Priority;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,31 +15,31 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class priorityController {
-    public Button closeButton;
+public class departmentController {
+    public TextField departmentTextField;
     public Button saveButton;
-    public TextField priorityTextField;
-    public ListView<Priority> priorityList;
-    ObservableList<Priority> list = FXCollections.observableArrayList();
+    public Button closeButton;
+    public ListView<Department> departmentList;
+    ObservableList<Department> list = FXCollections.observableArrayList();
 
-    Priority selectedPriority = null;
+    Department selectedDepartment = null;
 
     public void initialize() {
         String s;
         BufferedReader br = null;
 
         try {
-            br = new BufferedReader(new FileReader("priorities.csv"));
+            br = new BufferedReader(new FileReader("departments.csv"));
             try {
                 //br.readLine(); // ignoriere die erste Zeile => Überschriften
 
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
-                    Priority a = new Priority();
+                    Department a = new Department();
 
                     String[] words = s.split(";");
-                    a.prioritaetsNummer = words[0];
-                    a.prioritaetsText = words[1];
+                    a.abteilungsNummer = words[0];
+                    a.abteilungsName = words[1];
 
                     list.add(a); // füge Artikel zur Liste hinzu
                 }
@@ -49,16 +50,16 @@ public class priorityController {
             System.out.println(io.getMessage());
         }
 
-        priorityList.setItems(list);
+        departmentList.setItems(list);
     }
 
-    public void priorityListClicked(MouseEvent mouseEvent) {
-        Priority selected = priorityList.getSelectionModel().getSelectedItem();
+    public void departmentListClicked(MouseEvent mouseEvent) {
+        Department selected = departmentList.getSelectionModel().getSelectedItem();
 
         if (selected != null) {
-            this.selectedPriority = selected;
+            this.selectedDepartment = selected;
 
-            priorityTextField.setText(selected.prioritaetsText);
+            departmentTextField.setText(selected.abteilungsName);
         }
     }
 

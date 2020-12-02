@@ -138,4 +138,14 @@ public class Controller {
     public void closeProgramClicked(ActionEvent actionEvent) {
         System.exit(0);
     }
+
+    public void editUserClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/user.fxml", "Benutzer bearbeiten");
+    }
+
+    public void editDepartmentClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/department.fxml", "Abteilung bearbeiten");
+    }
 }
