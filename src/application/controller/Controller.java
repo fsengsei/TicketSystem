@@ -134,6 +134,10 @@ public class Controller {
         MyFXMLLoader loader = new MyFXMLLoader();
         loader.loadFXML("view/priority.fxml", "Prioritäten bearbeiten");
     }
+    public void editUserclicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/user.fxml", "User bearbeiten");
+    }
 
     public void closeProgramClicked(ActionEvent actionEvent) {
         System.exit(0);
