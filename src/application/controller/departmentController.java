@@ -20,37 +20,12 @@ public class departmentController {
     public Button saveButton;
     public Button closeButton;
     public ListView<Department> departmentList;
-    ObservableList<Department> list = FXCollections.observableArrayList();
+
 
     Department selectedDepartment = null;
 
     public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("departments.csv"));
-            try {
-                //br.readLine(); // ignoriere die erste Zeile => Überschriften
-
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    Department a = new Department();
-
-                    String[] words = s.split(";");
-                    a.abteilungsNummer = words[0];
-                    a.abteilungsName = words[1];
-
-                    list.add(a); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-            System.out.println(io.getMessage());
-        }
-
-        departmentList.setItems(list);
+        departmentList.setItems(Department.loadStatusFile("departments.csv"));
     }
 
     public void departmentListClicked(MouseEvent mouseEvent) {

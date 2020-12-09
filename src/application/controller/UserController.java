@@ -33,41 +33,7 @@ public class UserController {
     User selecteduser = null;
 
     public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("users.csv"));
-            try {
-                //br.readLine(); // ignoriere die erste Zeile => Überschriften
-
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-
-                    User a = new User();
-
-
-                    String[] words = s.split(";");
-                    a.usernumber = words[0];
-                    a.titel = words[1];
-                    a.name = words[2];
-                    a.adress = words[3];
-                    a.zip = words[4];
-                    a.city = words[5];
-                    a.abtnumber = words[6];
-
-
-
-                    list.add(a); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-        }
-
-        listviewuser.setItems(list);
+        listviewuser.setItems(User.loadStatusFile("users.csv"));
     }
 
 
