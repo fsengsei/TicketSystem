@@ -20,37 +20,10 @@ public class statuscontroller {
     public Button saveButton;
     public Button closeButton;
 
-    ObservableList<Status> list = FXCollections.observableArrayList();
-
     Status selectedstatus = null;
 
     public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("stati.csv"));
-            try {
-                //br.readLine(); // ignoriere die erste Zeile => Überschriften
-
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Status a = new Status();
-
-                    String[] words = s.split(";");
-                    a.statinumber = words[0];
-                    a.stati = words[1];
-
-                    list.add(a); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-        }
-
-        listview.setItems(list);
+        listview.setItems(Status.loadStatusFile("stati.csv"));
     }
 
     public void listviewclicked(MouseEvent mouseEvent) {
@@ -71,4 +44,3 @@ public class statuscontroller {
         stage.close();
     }
 }
-
