@@ -1,14 +1,13 @@
 package application.controller;
 
 import application.model.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class UserController {
     public TextField nameTextField;
@@ -18,11 +17,9 @@ public class UserController {
     public TextField CityTextField;
     public ComboBox departmentComboBox;
     public TextField CountryTextField;
-    public Button SaveButtom;
-    public Button CloseButton;
+    public Button saveButtom;
+    public Button closeButton;
     public ListView<User> listviewuser;
-    ObservableList<User> list = FXCollections.observableArrayList();
-
 
     User selecteduser = null;
 
@@ -43,12 +40,12 @@ public class UserController {
             ZipTextField.setText(selected.zip);
             CityTextField.setText(selected.city);
             CountryTextField.setVisible(false);
-
-
         }
     }
 
     public void closeOnCLick(ActionEvent actionEvent) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
     public void saveOnClick(ActionEvent actionEvent) {

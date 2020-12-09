@@ -14,7 +14,6 @@ public class departmentController {
     public Button closeButton;
     public ListView<Department> departmentList;
 
-
     Department selectedDepartment = null;
 
     public void initialize() {
