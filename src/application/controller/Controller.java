@@ -1,6 +1,8 @@
 package application.controller;
 
 import application.MyFXMLLoader;
+import application.model.Ticket;
+import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.ListView;
@@ -9,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
-    public ListView ticket_ListView;
+    public ListView<Ticket> ticket_ListView;
     public AnchorPane Content_Pane;
 
 
@@ -38,12 +40,26 @@ public class Controller {
     }
 
     public void ticketviewclicked(MouseEvent mouseEvent) {
+        Ticket selecteduser = null;
+
         MyFXMLLoader loader = new MyFXMLLoader();
         Parent root =  loader.loadFXML("view/ticket.fxml");
 
         Content_Pane.getChildren().add(root);
 
         TicketController controller = (TicketController) loader.getController();
+        Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
+        controller.nameTextField.setText(selected.Name);
+        controller.Idfield.setText(selected.ID);
+        controller.DescTextField.setText(selected.Beschreibung);
+
+
+
 
     }
+
+        public void initialize() {
+            ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
+        }
+
 }

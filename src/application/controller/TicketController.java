@@ -20,6 +20,8 @@ public class TicketController {
     public ComboBox priority_idComboBox;
     public ComboBox status_idComboBox;
     public ComboBox order_idComboBox;
+    public TextField Idfield;
+
 
     public void createonClick(ActionEvent actionEvent) {
     }
