@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ticket {
+public class TicketController {
 
     public TextField nameTextField;
     public Button createButton;
@@ -25,5 +25,11 @@ public class ticket {
     }
 
     public void deleteonClick(ActionEvent actionEvent) {
+    }
+
+    public void closeOnClick(ActionEvent actionEvent) {
+    }
+
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 }
