@@ -43,7 +43,7 @@ public class Controller {
         Ticket selecteduser = null;
 
         MyFXMLLoader loader = new MyFXMLLoader();
-        Parent root =  loader.loadFXML("view/ticket.fxml");
+        Parent root = loader.loadFXML("view/ticket.fxml");
 
         Content_Pane.getChildren().add(root);
 
@@ -54,12 +54,10 @@ public class Controller {
         controller.DescTextField.setText(selected.Beschreibung);
 
 
-
-
     }
 
-        public void initialize() {
-            ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
-        }
+    public void initialize() {
+        ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
+    }
 
 }

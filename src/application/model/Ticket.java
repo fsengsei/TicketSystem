@@ -18,7 +18,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return ID + " - " + Name + " - " + Beschreibung + " - " + Status + " - " + Priority ;
+        return ID + " - " + Name;
     }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
