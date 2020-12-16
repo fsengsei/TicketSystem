@@ -40,6 +40,7 @@ public class Ticket {
                     a.Name = words[1];
                     a.Beschreibung = words[2];
 
+
                     result.add(a); // füge Artikel zur Liste hinzu
                 }
             } finally {
