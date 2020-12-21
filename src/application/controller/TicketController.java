@@ -26,6 +26,9 @@ public class TicketController {
     public TextField Idfield;
     private Ticket ticket;
     public void setTicket(Ticket t) {
+        if (t == null) {
+            this.ticket = new Ticket();
+        }
         this.ticket = t;
 
         nameTextField.setText(t.Name);
@@ -34,14 +37,14 @@ public class TicketController {
         priority_idComboBox.setItems(Priority.loadPriorityFile("priorities.csv"));
 
         for (Status s : status_idComboBox.getItems()) {
-            if (s.statinumber == t.Status.statinumber) {
+            if (s.statinumber.equals(t.Status.statinumber)) {
                 status_idComboBox.getSelectionModel().select(s);
                 break;
             }
         }
 
         for (Priority p : priority_idComboBox.getItems()) {
-            if (p.prioritaetsNummer == t.Priority.prioritaetsNummer) {
+            if (p.prioritaetsNummer.equals(t.Priority.prioritaetsNummer)) {
                 priority_idComboBox.getSelectionModel().select(p);
                 break;
             }
@@ -54,8 +57,8 @@ public class TicketController {
         ticket.Name = nameTextField.getText();
         ticket.ID = Idfield.getText();
         ticket.Beschreibung = DescTextField.getText();
-        ticket.Status = (Status) status_idComboBox.getSelectionModel().getSelectedItem();
-        ticket.Priority = (Priority) priority_idComboBox.getSelectionModel().getSelectedItem();
+        ticket.Status =  status_idComboBox.getSelectionModel().getSelectedItem();
+        ticket.Priority =  priority_idComboBox.getSelectionModel().getSelectedItem();
         return ticket;
     }
 

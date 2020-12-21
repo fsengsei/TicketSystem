@@ -20,6 +20,9 @@ public class Ticket {
     public String toString() {
         return ID + " - " + Name;
     }
+    public String newline(){
+        return ID + ";" + Name + ";" + Beschreibung + ";" + Status + ";" + Priority;
+    }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
         ObservableList<Ticket> result = FXCollections.observableArrayList();
@@ -39,7 +42,12 @@ public class Ticket {
                     a.ID = words[0];
                     a.Name = words[1];
                     a.Beschreibung = words[2];
-
+                    Status status  = new Status();
+                    status.statinumber = words[3];
+                    a.Status = status;
+                    application.model.Priority p = new Priority();
+                    p.prioritaetsNummer = words[4];
+                    a.Priority = p;
 
                     result.add(a); // füge Artikel zur Liste hinzu
                 }

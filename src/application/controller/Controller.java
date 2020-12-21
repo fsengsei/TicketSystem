@@ -14,6 +14,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Controller {
 
     public ListView<Ticket> ticket_ListView;
@@ -22,9 +26,9 @@ public class Controller {
     public ComboBox filterprioritycombobox; // Filtern nach Status
     public ComboBox filterstatuscombobox; //Filtern nach Priority
     private TicketController active = null;
-    ObservableList<Ticket> list;
+    ObservableList<Ticket> list = null;
     ObservableList<Ticket> sortedlist = FXCollections.observableArrayList();
-
+    private Ticket selectedTicket = null;
 
 
     /**
@@ -69,6 +73,7 @@ public class Controller {
 
         TicketController controller = (TicketController) loader.getController();
         Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
+
         controller.nameTextField.setText(selected.Name);
         controller.Idfield.setText(selected.ID);
         controller.DescTextField.setText(selected.Beschreibung);
@@ -77,15 +82,13 @@ public class Controller {
         active.setTicket(ticket_ListView.getSelectionModel().getSelectedItem());
 
 
-
-
     }
 
     public void initialize() {
         filterstatuscombobox.setItems(Status.loadStatusFile("stati.csv"));
         filterprioritycombobox.setItems(Priority.loadPriorityFile("priorities.csv"));
         ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
-
+        list = FXCollections.observableArrayList(ticket_ListView.getItems());
     }
 
     public void filterfieldreleased(KeyEvent keyEvent) {
@@ -141,23 +144,22 @@ public class Controller {
         //Laden des Tickets
         //Entfernen aus ListView
         //Datei aktualisieren
-        if (this.selectedArticle != null) {
+        Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
+        selectedTicket = selected;
+        if (this.selectedTicket != null) {
             // Aktualisiere die Artikeldaten
             // (übernimm die aktuellen Daten von den Textfeldern)
             // und speichere alles in die Datei
-            list.remove(selectedArticle);
-
             System.out.println("Daten gelöscht");
+            ticket_ListView.getItems().remove(this.selectedTicket);
 
-            articleNumberTextField.clear();
-            articleNameTextField.clear();
-            articleDepotTextField.clear();
-            articlePriceTextField.clear();
+            ticket_ListView.refresh();
 
+            //ticket_ListView.setItems(list);
 
-            articleList.refresh();
-            articleList.setItems(list);
             writeArticlesToFile();
+            newclicked(actionEvent);
+
         }
 
 
@@ -176,4 +178,22 @@ public class Controller {
         active = (TicketController) loader.getController();
         active.setTicket(null);
     }
+
+    private void writeArticlesToFile() {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("tickets.csv", true));
+
+            for (Ticket a : ticket_ListView.getItems()) {
+
+                bw.write(a.newline());
+
+            }
+            bw.flush();
+
+            bw.close();
+        } catch (IOException e) {
+
+        }
+    }
+
 }
