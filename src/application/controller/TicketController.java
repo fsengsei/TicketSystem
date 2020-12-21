@@ -31,7 +31,7 @@ public class TicketController {
             priority_idComboBox.setItems(Priority.loadPriorityFile("priorities.csv"));
 
             for (Status s : status_idComboBox.getItems()) {
-                if (s.statinumber.equals(t.Status.statinumber)) {
+                if (s.statiNummer.equals(t.Status.statiNummer)) {
                     status_idComboBox.getSelectionModel().select(s);
                     break;
                 }

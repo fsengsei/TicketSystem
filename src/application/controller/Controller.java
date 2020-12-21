@@ -45,7 +45,7 @@ public class Controller {
        if (!textfieldfilter.equals("") || filterstatuscombobox != null || filterprioritycombobox != null) {
            sortedlist = FXCollections.observableArrayList();
            for (Ticket ticket : list) {
-               if (ticket.Name.contains(filternametextfield.getText()) && ticket.Status.statinumber.equals(filterstatuscombobox.getSelectionModel().getSelectedItem().statinumber) && ticket.Priority.prioritaetsNummer.equals(filterprioritycombobox.getSelectionModel().getSelectedItem().prioritaetsNummer)) {
+               if (ticket.Name.contains(filternametextfield.getText()) && ticket.Status.statiNummer.equals(filterstatuscombobox.getSelectionModel().getSelectedItem().statiNummer) && ticket.Priority.prioritaetsNummer.equals(filterprioritycombobox.getSelectionModel().getSelectedItem().prioritaetsNummer)) {
                    sortedlist.add(ticket);
                }
            }
@@ -153,7 +153,7 @@ public class Controller {
             ticket.Name = active.nameTextField.getText();
             ticket.ID = active.Idfield.getText();
             ticket.Beschreibung = active.DescTextField.getText();
-            ticket.Status.statinumber = active.status_idComboBox.getSelectionModel().getSelectedItem().toString();
+            ticket.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().toString();
             ticket.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().toString();
 
             list.add(ticket);

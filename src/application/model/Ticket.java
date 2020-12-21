@@ -23,7 +23,7 @@ public class Ticket {
 
 
     public String newline(){
-        return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statinumber + ";" + Priority.prioritaetsNummer;
+        return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
     }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
@@ -45,7 +45,7 @@ public class Ticket {
                     a.Name = words[1];
                     a.Beschreibung = words[2];
                     Status status  = new Status();
-                    status.statinumber = words[3];
+                    status.statiNummer = words[3];
                     a.Status = status;
                     application.model.Priority p = new Priority();
                     p.prioritaetsNummer = words[4];
