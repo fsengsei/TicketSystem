@@ -1,0 +1,12 @@
+ ObservableList<Ticket> list = FXCollections.observableArrayList(allTickets);
+        if (!filterprioritycombobox.equals(null)){
+            sortedlist = FXCollections.observableArrayList();
+            for (Ticket ticket : list){
+                if (ticket.Status.statinumber.equals(filterstatuscombobox.getSelectionModel().getSelectedItem().statinumber)){
+                    sortedlist.add(ticket);
+                }
+            }
+        } else {
+            sortedlist = list;
+        }
+        ticket_ListView.setItems(sortedlist);

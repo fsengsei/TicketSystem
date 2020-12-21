@@ -18,10 +18,12 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return ID + " - " + Name;
+        return ID + "-" + Name;
     }
+
+
     public String newline(){
-        return ID + ";" + Name + ";" + Beschreibung + ";" + Status + ";" + Priority;
+        return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statinumber + ";" + Priority.prioritaetsNummer;
     }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
@@ -50,6 +52,8 @@ public class Ticket {
                     a.Priority = p;
 
                     result.add(a); // füge Artikel zur Liste hinzu
+
+
                 }
             } finally {
                 br.close();
