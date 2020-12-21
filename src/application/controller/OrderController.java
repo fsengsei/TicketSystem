@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class order {
+public class OrderController {
     public TextField nameTextField;
     public TextArea descTextField;
     public Button deleteButton;

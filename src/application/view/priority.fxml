@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="179.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.priorityController">
+<AnchorPane prefHeight="179.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PriorityController">
    <children>
       <TextField fx:id="priorityTextField" layoutX="145.0" layoutY="14.0" prefHeight="25.0" prefWidth="278.0" promptText="Priorität" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Button fx:id="saveButton" layoutX="270.0" layoutY="140.0" mnemonicParsing="false" onAction="#saveOnClick" text="Speichern" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="98.0" />

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.order">
+<AnchorPane prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.OrderController">
    <children>
       <TextField fx:id="nameTextField" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="572.0" promptText="Auftrag" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <TextArea fx:id="descTextField" layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="584.0" promptText="Beschreibung" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="48.0" />

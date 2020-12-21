@@ -11,15 +11,12 @@ public class Ticket {
     public String ID;
     public String Name;
     public String Beschreibung;
-    public Status Status;
-    public Priority Priority;
-
-
 
     @Override
     public String toString() {
         return ID + " - " + Name;
     }
+
     public String newline(){
         return ID + ";" + Name + ";" + Beschreibung + ";" + Status + ";" + Priority;
     }
@@ -54,8 +51,7 @@ public class Ticket {
             } finally {
                 br.close();
             }
-        } catch (
-                IOException io) {
+        } catch (IOException io) {
             System.out.println(io.getMessage());
         }
 

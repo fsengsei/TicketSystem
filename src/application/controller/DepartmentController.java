@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class departmentController {
+public class DepartmentController {
     public TextField departmentTextField;
     public Button saveButton;
     public Button closeButton;
@@ -30,11 +30,11 @@ public class departmentController {
         }
     }
 
-    public void saveOnClick(ActionEvent actionEvent) {
-    }
-
     public void closeOnClick(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 }
