@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class statuscontroller {
+public class StatusController {
     public TextField statusTextField;
     public ListView<Status> listview;
     public Button saveButton;
@@ -30,11 +30,11 @@ public class statuscontroller {
         }
     }
 
-    public void saveOnClick(ActionEvent actionEvent) {
-    }
-
     public void closeOnClick(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 }

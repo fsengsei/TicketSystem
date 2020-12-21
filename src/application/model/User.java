@@ -18,7 +18,6 @@ public class User {
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
 
-
     public static ObservableList<User> loadStatusFile(String filename) {
         ObservableList<User> result = FXCollections.observableArrayList();
         String s;
@@ -34,8 +33,6 @@ public class User {
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
 
                     User a = new User();
-
-
                     String[] words = s.split(";");
                     a.usernumber = words[0];
                     a.titel = words[1];
@@ -45,8 +42,6 @@ public class User {
                     a.city = words[5];
                     a.abtnumber = words[6];
 
-
-
                     result.add(a); // füge Artikel zur Liste hinzu
                 }
             } finally {
@@ -54,7 +49,6 @@ public class User {
             }
         } catch (IOException io) {
         }
-
 
         return result;
     }

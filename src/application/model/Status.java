@@ -8,11 +8,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Status {
-    public String statinumber;
+    public String statiNummer;
     public String stati;
 
+    @Override
     public String toString() {
-        return statinumber + " - " + stati;
+        return statiNummer + " - " + stati;
     }
 
     public static ObservableList<Status> loadStatusFile(String filename) {
@@ -31,7 +32,7 @@ public class Status {
                     Status a = new Status();
 
                     String[] words = s.split(";");
-                    a.statinumber = words[0];
+                    a.statiNummer = words[0];
                     a.stati = words[1];
 
                     result.add(a); // füge Artikel zur Liste hinzu

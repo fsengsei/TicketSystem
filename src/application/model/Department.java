@@ -16,7 +16,6 @@ public class Department {
         return abteilungsNummer + " - " + abteilungsName;
     }
 
-
     public static ObservableList<Department> loadStatusFile(String filename) {
         ObservableList<Department> result = FXCollections.observableArrayList();
         String s;
@@ -36,8 +35,6 @@ public class Department {
                     a.abteilungsName = words[1];
 
                     result.add(a); // füge Artikel zur Liste hinzu
-
-
                 }
             } finally {
                 br.close();
@@ -45,7 +42,7 @@ public class Department {
         } catch (IOException io) {
             System.out.println(io.getMessage());
         }
-        return result;
 
+        return result;
     }
 }

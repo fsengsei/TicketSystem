@@ -3,7 +3,7 @@ package application.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-public class Comment {
+public class CommentController {
     public TextField titleTextField;
     public TextArea textTextField;
     public DatePicker datepicker;

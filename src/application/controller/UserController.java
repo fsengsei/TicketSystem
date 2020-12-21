@@ -27,7 +27,6 @@ public class UserController {
         listviewuser.setItems(User.loadStatusFile("users.csv"));
     }
 
-
     public void listviewuserclicked(MouseEvent mouseEvent) {
         User selected = listviewuser.getSelectionModel().getSelectedItem();
 

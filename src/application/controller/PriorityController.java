@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class priorityController {
+public class PriorityController {
     public Button closeButton;
     public Button saveButton;
     public TextField priorityTextField;
@@ -30,11 +30,11 @@ public class priorityController {
         }
     }
 
-    public void saveOnClick(ActionEvent actionEvent) {
-    }
-
     public void closeOnClick(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void saveOnClick(ActionEvent actionEvent) {
     }
 }
