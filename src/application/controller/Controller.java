@@ -20,12 +20,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
-
     public ListView<Ticket> ticket_ListView;
     public AnchorPane Content_Pane;
     public TextField filternametextfield; //filtern nach dem Namen des ToDos
-    public ComboBox <Priority> filterprioritycombobox; // Filtern nach Status
-    public ComboBox <Status> filterstatuscombobox; //Filtern nach Priority
+    public ComboBox<Priority> filterprioritycombobox; // Filtern nach Status
+    public ComboBox<Status> filterstatuscombobox; //Filtern nach Priority
     private TicketController active = null;
 
     private ArrayList<Ticket> allTickets;
@@ -34,28 +33,27 @@ public class Controller {
     ObservableList<Ticket> sortedlist = FXCollections.observableArrayList();
     private Ticket selectedTicket = null;
 
+    /** Filter müssen UND - Verknüpft sein */
+    public void filters() {
+        String textfieldfilter = filternametextfield.getText();
+        sortedlist = FXCollections.observableArrayList(allTickets);
 
-    /**
-     * Filter müssen UND - Verknüpft sein
-     */
-   public void filters() {
-       String textfieldfilter = filternametextfield.getText();
-       sortedlist.clear();
+        if (!textfieldfilter.equals("") || filterstatuscombobox.getValue() != null || filterprioritycombobox.getValue() != null) {
+            if (textfieldfilter.length() > 0) {
+                sortedlist.removeIf(ticket -> !ticket.Name.toLowerCase().contains(filternametextfield.getText().toLowerCase()));
+            }
 
-       if (!textfieldfilter.equals("") || filterstatuscombobox != null || filterprioritycombobox != null) {
-           sortedlist = FXCollections.observableArrayList();
-           for (Ticket ticket : list) {
-               if (ticket.Name.contains(filternametextfield.getText()) && ticket.Status.statiNummer.equals(filterstatuscombobox.getSelectionModel().getSelectedItem().statiNummer) && ticket.Priority.prioritaetsNummer.equals(filterprioritycombobox.getSelectionModel().getSelectedItem().prioritaetsNummer)) {
-                   sortedlist.add(ticket);
-               }
-           }
+            if (filterstatuscombobox.getValue() != null) {
+                sortedlist.removeIf(ticket -> ticket.Status.statiNummer.equals(filterstatuscombobox.getSelectionModel().getSelectedItem().statiNummer));
+            }
 
-           ticket_ListView.setItems(sortedlist);
-       } else {
-           ticket_ListView.setItems(list);
-       }
-   }
+            if (filterprioritycombobox.getValue() != null) {
+                sortedlist.removeIf(ticket -> ticket.Priority.prioritaetsNummer.equals(filterprioritycombobox.getSelectionModel().getSelectedItem().prioritaetsNummer));
+            }
+        }
 
+        ticket_ListView.setItems(sortedlist);
+    }
 
     public void editStatiClicked(ActionEvent actionEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
@@ -82,8 +80,6 @@ public class Controller {
     }
 
     public void ticketviewclicked(MouseEvent mouseEvent) {
-
-
         MyFXMLLoader loader = new MyFXMLLoader();
         Parent root = loader.loadFXML("view/ticket.fxml");
 
@@ -92,14 +88,14 @@ public class Controller {
         TicketController controller = (TicketController) loader.getController();
         Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
 
-        controller.nameTextField.setText(selected.Name);
-        controller.Idfield.setText(selected.ID);
-        controller.DescTextField.setText(selected.Beschreibung);
+        if (selected != null) {
+            controller.nameTextField.setText(selected.Name);
+            controller.Idfield.setText(selected.ID);
+            controller.DescTextField.setText(selected.Beschreibung);
+        }
 
         active = (TicketController) loader.getController();
         active.setTicket(ticket_ListView.getSelectionModel().getSelectedItem());
-
-
     }
 
     public void initialize() {
@@ -111,19 +107,15 @@ public class Controller {
     }
 
     public void filterfieldreleased(KeyEvent keyEvent) {
-       filters();
+        filters();
     }
-
 
     public void statuscomboboxclicked(ActionEvent actionEvent) {
-       filters();
+        filters();
     }
 
-
-
-
     public void priorityComboboxclicked(ActionEvent actionEvent) {
-       filters();
+        filters();
     }
 
     public void saveclicked(ActionEvent actionEvent) {
@@ -131,13 +123,15 @@ public class Controller {
         //Datei aktualisieren
         MyFXMLLoader loader = new MyFXMLLoader();
         Parent root = loader.loadFXML("view/ticket.fxml");
+
         Content_Pane.getChildren().add(root);
         TicketController controller = (TicketController) loader.getController();
 
         Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
         selectedTicket = selected;
         active = (TicketController) loader.getController();
-        if (this.selectedTicket != null){
+
+        if (this.selectedTicket != null) {
             System.out.println("Tickets aktualisert");
             selectedTicket.Name = controller.nameTextField.getText();
             selectedTicket.ID = controller.Idfield.getText();
@@ -158,8 +152,8 @@ public class Controller {
 
             list.add(ticket);
         }
-        writetoTicketfile();
 
+        writetoTicketfile();
     }
 
     public void deleteclicked(ActionEvent actionEvent) {
@@ -176,17 +170,11 @@ public class Controller {
             list.remove(this.selectedTicket);
 
             ticket_ListView.setItems(list);
-
             ticket_ListView.refresh();
-
-
 
             writetoTicketfile();
             newclicked(actionEvent);
-
         }
-
-
     }
 
     public void newclicked(ActionEvent actionEvent) {
@@ -194,7 +182,6 @@ public class Controller {
         Parent root = loader.loadFXML("view/ticket.fxml");
         Content_Pane.getChildren().add(root);
 
-        TicketController controller = (TicketController) loader.getController();
         active = (TicketController) loader.getController();
         active.setTicket(null);
     }
@@ -202,19 +189,15 @@ public class Controller {
     private void writetoTicketfile() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("tickets.csv"));
-
             for (Ticket a : list) {
-
                 bw.write(a.newline());
                 bw.newLine();
-
             }
-            bw.flush();
 
+            bw.flush();
             bw.close();
         } catch (IOException e) {
 
         }
     }
-
 }

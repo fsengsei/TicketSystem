@@ -14,13 +14,10 @@ public class Ticket {
     public Status Status;
     public Priority Priority;
 
-
-
     @Override
     public String toString() {
         return ID + "-" + Name;
     }
-
 
     public String newline(){
         return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
@@ -52,8 +49,6 @@ public class Ticket {
                     a.Priority = p;
 
                     result.add(a); // füge Artikel zur Liste hinzu
-
-
                 }
             } finally {
                 br.close();

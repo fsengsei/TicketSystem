@@ -5,13 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="359.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TicketController">
+<AnchorPane prefHeight="330.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TicketController">
    <children>
       <TextField fx:id="nameTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="579.0" promptText="Name" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <TextArea fx:id="DescTextField" layoutX="14.0" layoutY="80.0" prefHeight="200.0" prefWidth="579.0" promptText="Beschreibung" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="80.0" />
-      <ComboBox fx:id="priority_idComboBox" layoutX="430.0" layoutY="283.0" prefWidth="150.0" promptText="priority_id" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="283.0" />
-      <ComboBox fx:id="status_idComboBox" layoutX="213.0" layoutY="283.0" prefWidth="150.0" promptText="status_id" AnchorPane.leftAnchor="213.0" AnchorPane.topAnchor="283.0" />
-      <ComboBox fx:id="order_idComboBox" layoutX="8.0" layoutY="283.0" prefWidth="150.0" promptText="order_id" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="283.0" />
-      <TextField fx:id="Idfield" layoutX="14.0" layoutY="46.0" prefHeight="25.0" prefWidth="572.0" promptText="ID" />
+      <ComboBox fx:id="priority_idComboBox" layoutX="436.0" layoutY="291.0" prefWidth="150.0" promptText="Priorität" AnchorPane.leftAnchor="436.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="291.0" />
+      <ComboBox fx:id="status_idComboBox" layoutX="225.0" layoutY="291.0" prefWidth="150.0" promptText="Status" AnchorPane.topAnchor="291.0" />
+      <ComboBox fx:id="order_idComboBox" layoutX="14.0" layoutY="291.0" prefWidth="150.0" promptText="Auftrag" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="291.0" />
+      <TextField fx:id="Idfield" layoutX="14.0" layoutY="46.0" prefHeight="25.0" prefWidth="572.0" promptText="ID" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="46.0" />
    </children>
 </AnchorPane>

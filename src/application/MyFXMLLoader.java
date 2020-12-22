@@ -38,8 +38,8 @@ public class MyFXMLLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
     public Parent loadFXML(String fxmlPath) {
         Parent result = null;
         try {
@@ -53,7 +53,6 @@ public class MyFXMLLoader {
         return result;
     }
 
-
     public Stage getActualStage() {
         return actualStage;
     }
@@ -61,5 +60,4 @@ public class MyFXMLLoader {
     public Object getController() {
         return controller;
     }
-
 }

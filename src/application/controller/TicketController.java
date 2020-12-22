@@ -51,14 +51,10 @@ public class TicketController {
             status_idComboBox.setItems(Status.loadStatusFile("stati.csv"));
             priority_idComboBox.setItems(Priority.loadPriorityFile("priorities.csv"));
         }
-
-
     }
 
     public Ticket getTicket() {
-        /**
-         * aktualisieren der Ticket - Daten
-         */
+        /** Aktualisieren der Ticket - Daten */
         ticket.Name = nameTextField.getText();
         ticket.ID = Idfield.getText();
         ticket.Beschreibung = DescTextField.getText();
