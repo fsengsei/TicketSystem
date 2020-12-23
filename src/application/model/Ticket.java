@@ -19,17 +19,17 @@ public class Ticket {
         return ID + "-" + Name;
     }
 
-    public String newline(){
+    public String newCSVline(){
         return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
     }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
         ObservableList<Ticket> result = FXCollections.observableArrayList();
         String s;
-        BufferedReader br = null;
+
 
         try {
-            br = new BufferedReader(new FileReader(filename));
+            BufferedReader br  = new BufferedReader(new FileReader(filename));
             try {
                 //br.readLine(); // ignoriere die erste Zeile => Überschriften
 

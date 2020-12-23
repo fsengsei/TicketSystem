@@ -15,6 +15,7 @@ public class User {
     public String zip;
     public String city;
     public String abtnumber;
+    public String abtname;
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
 
@@ -41,6 +42,8 @@ public class User {
                     a.zip = words[4];
                     a.city = words[5];
                     a.abtnumber = words[6];
+
+
 
                     result.add(a); // füge Artikel zur Liste hinzu
                 }

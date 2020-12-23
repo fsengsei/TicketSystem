@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Department;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ public class UserController {
     public TextField streetButton;
     public TextField ZipTextField;
     public TextField CityTextField;
-    public ComboBox departmentComboBox;
+    public ComboBox<Department> departmentComboBox;
     public TextField CountryTextField;
     public Button saveButtom;
     public Button closeButton;
@@ -25,13 +26,17 @@ public class UserController {
 
     public void initialize() {
         listviewuser.setItems(User.loadStatusFile("users.csv"));
+        departmentComboBox.setItems(Department.loadStatusFile("departments.csv"));
     }
 
     public void listviewuserclicked(MouseEvent mouseEvent) {
+
         User selected = listviewuser.getSelectionModel().getSelectedItem();
 
         if (selected != null) {
             this.selecteduser = selected;
+
+
 
             nameTextField.setText(selected.name);
             titleTextField.setText(selected.titel);
@@ -39,6 +44,14 @@ public class UserController {
             ZipTextField.setText(selected.zip);
             CityTextField.setText(selected.city);
             CountryTextField.setVisible(false);
+            for (Department d : departmentComboBox.getItems()){
+                if (d.abteilungsNummer.equals(selected.abtnumber)){
+                    departmentComboBox.getSelectionModel().select(d);
+                    break;
+                }
+            }
+
+
         }
     }
 

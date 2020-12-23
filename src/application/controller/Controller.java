@@ -121,34 +121,28 @@ public class Controller {
     public void saveclicked(ActionEvent actionEvent) {
         //Wenn Ticket neu -> Laden des Tickets und hinzufügen in die Liste!
         //Datei aktualisieren
-        MyFXMLLoader loader = new MyFXMLLoader();
-        Parent root = loader.loadFXML("view/ticket.fxml");
-
-        Content_Pane.getChildren().add(root);
-        TicketController controller = (TicketController) loader.getController();
 
         Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
-        selectedTicket = selected;
-        active = (TicketController) loader.getController();
+        TicketController controller = active;
 
-        if (this.selectedTicket != null) {
+        if (selected != null) {
             System.out.println("Tickets aktualisert");
-            selectedTicket.Name = controller.nameTextField.getText();
-            selectedTicket.ID = controller.Idfield.getText();
-            selectedTicket.Beschreibung = controller.DescTextField.getText();
-            selectedTicket.Status = controller.status_idComboBox.getSelectionModel().getSelectedItem();
-            selectedTicket.Priority = controller.priority_idComboBox.getSelectionModel().getSelectedItem();
+            selected.Name = controller.nameTextField.getText();
+            selected.ID = controller.Idfield.getText();
+            selected.Beschreibung = controller.DescTextField.getText();
+            selected.Status.statiNummer = controller.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
+            selected.Priority.prioritaetsNummer = controller.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
 
             ticket_ListView.refresh();
         } else {
             System.out.println("Neues Ticket");
 
             Ticket ticket = new Ticket();
-            ticket.Name = active.nameTextField.getText();
-            ticket.ID = active.Idfield.getText();
-            ticket.Beschreibung = active.DescTextField.getText();
-            ticket.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().toString();
-            ticket.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().toString();
+            ticket.Name = controller.nameTextField.getText();
+            ticket.ID = controller.Idfield.getText();
+            ticket.Beschreibung = controller.DescTextField.getText();
+            ticket.Status.statiNummer = controller.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
+            ticket.Priority.prioritaetsNummer = controller.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
 
             list.add(ticket);
         }
@@ -190,7 +184,7 @@ public class Controller {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("tickets.csv"));
             for (Ticket a : list) {
-                bw.write(a.newline());
+                bw.write(a.newCSVline());
                 bw.newLine();
             }
 
