@@ -14,7 +14,7 @@ public class TicketController {
     public TextField nameTextField;
     public Button createButton;
     public TextArea DescTextField;
-    public Button deleteButton;
+
     public ComboBox<Priority> priority_idComboBox;
     public ComboBox<Status> status_idComboBox;
     public ComboBox order_idComboBox;

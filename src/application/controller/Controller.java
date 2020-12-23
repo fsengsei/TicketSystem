@@ -148,9 +148,11 @@ public class Controller {
 
 
             list.add(t);
+            ticket_ListView.setItems(list);
+            ticket_ListView.refresh();
 
         }
-        ticket_ListView.refresh();
+
 
         writetoTicketfile();
     }
