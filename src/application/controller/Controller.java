@@ -123,29 +123,34 @@ public class Controller {
         //Datei aktualisieren
 
         Ticket selected = ticket_ListView.getSelectionModel().getSelectedItem();
-        TicketController controller = active;
+
 
         if (selected != null) {
             System.out.println("Tickets aktualisert");
-            selected.Name = controller.nameTextField.getText();
-            selected.ID = controller.Idfield.getText();
-            selected.Beschreibung = controller.DescTextField.getText();
-            selected.Status.statiNummer = controller.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
-            selected.Priority.prioritaetsNummer = controller.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
+            selected.Name = active.nameTextField.getText();
+            selected.ID = active.Idfield.getText();
+            selected.Beschreibung = active.DescTextField.getText();
+            selected.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
+            selected.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
 
             ticket_ListView.refresh();
         } else {
+            Ticket t = new Ticket();
+            t.Status = new Status();
+            t.Priority = new Priority();
             System.out.println("Neues Ticket");
 
-            Ticket ticket = new Ticket();
-            ticket.Name = controller.nameTextField.getText();
-            ticket.ID = controller.Idfield.getText();
-            ticket.Beschreibung = controller.DescTextField.getText();
-            ticket.Status.statiNummer = controller.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
-            ticket.Priority.prioritaetsNummer = controller.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
+            t.Name = active.nameTextField.getText();
+            t.ID = active.Idfield.getText();
+            t.Beschreibung = active.DescTextField.getText();
+            t.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
+            t.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
 
-            list.add(ticket);
+
+            list.add(t);
+
         }
+        ticket_ListView.refresh();
 
         writetoTicketfile();
     }
