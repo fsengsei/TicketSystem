@@ -14,13 +14,12 @@ public class Priority {
     public String prioritaetsText;
 
 
-
     @Override
     public String toString() {
         return prioritaetsNummer + " - " + prioritaetsText;
     }
 
-    public static ObservableList <Priority> loadlist(){
+    public static ObservableList<Priority> loadlist() {
         ObservableList<Priority> list = FXCollections.observableArrayList();
 
 
@@ -28,10 +27,10 @@ public class Priority {
             Connection Connection = AccesDB.getConnection();
             Statement statement = null;
 
-             statement = Connection.createStatement();
+            statement = Connection.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM priorities");
 
-            while (results.next()){
+            while (results.next()) {
                 Priority p = new Priority();
                 p.prioritaetsText = results.getString("name");
                 p.prioritaetsNummer = results.getString("priority_id");
@@ -42,7 +41,6 @@ public class Priority {
             e.printStackTrace();
         }
         return list;
-
 
 
     }
