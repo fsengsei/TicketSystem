@@ -17,7 +17,7 @@ public class StatusController {
     Status selectedstatus = null;
 
     public void initialize() {
-        listview.setItems(Status.loadStatusFile("stati.csv"));
+        listview.setItems(Status.loadlist());
     }
 
     public void listviewclicked(MouseEvent mouseEvent) {

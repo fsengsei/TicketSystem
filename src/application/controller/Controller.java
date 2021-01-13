@@ -99,8 +99,8 @@ public class Controller {
     }
 
     public void initialize() {
-        filterstatuscombobox.setItems(Status.loadStatusFile("stati.csv"));
-        filterprioritycombobox.setItems(Priority.loadPriorityFile("priorities.csv"));
+        filterstatuscombobox.setItems(Status.loadlist());
+        filterprioritycombobox.setItems(Priority.loadlist());
         ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
         allTickets = new ArrayList<>(ticket_ListView.getItems());
         list = FXCollections.observableArrayList(ticket_ListView.getItems());

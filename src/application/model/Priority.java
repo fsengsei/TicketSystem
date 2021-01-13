@@ -1,19 +1,50 @@
 package application.model;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.*;
 
 public class Priority {
     public String prioritaetsNummer;
     public String prioritaetsText;
 
+
+
     @Override
     public String toString() {
         return prioritaetsNummer + " - " + prioritaetsText;
+    }
+
+    public static ObservableList <Priority> loadlist(){
+        ObservableList<Priority> list = FXCollections.observableArrayList();
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+             statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM priorities");
+
+            while (results.next()){
+                Priority p = new Priority();
+                p.prioritaetsText = results.getString("name");
+                p.prioritaetsNummer = results.getString("priority_id");
+                list.add(p);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+
+
+
     }
 
     public static ObservableList<Priority> loadPriorityFile(String filename) {

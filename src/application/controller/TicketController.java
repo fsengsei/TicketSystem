@@ -27,8 +27,8 @@ public class TicketController {
         if (t != null) {
             nameTextField.setText(t.Name);
             DescTextField.setText(t.Beschreibung);
-            status_idComboBox.setItems(Status.loadStatusFile("stati.csv"));
-            priority_idComboBox.setItems(Priority.loadPriorityFile("priorities.csv"));
+            status_idComboBox.setItems(Status.loadlist());
+            priority_idComboBox.setItems(Priority.loadlist());
 
             for (Status s : status_idComboBox.getItems()) {
                 if (s.statiNummer.equals(t.Status.statiNummer)) {
@@ -48,8 +48,8 @@ public class TicketController {
             DescTextField.setText("");
             Idfield.setText("");
 
-            status_idComboBox.setItems(Status.loadStatusFile("stati.csv"));
-            priority_idComboBox.setItems(Priority.loadPriorityFile("priorities.csv"));
+            status_idComboBox.setItems(Status.loadlist());
+            priority_idComboBox.setItems(Priority.loadlist());
         }
     }
 
