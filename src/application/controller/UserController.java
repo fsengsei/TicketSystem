@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Department;
+import application.model.Status;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -25,8 +26,7 @@ public class UserController {
     User selecteduser = null;
 
     public void initialize() {
-        listviewuser.setItems(User.loadStatusFile("users.csv"));
-        departmentComboBox.setItems(Department.loadlist());
+        listviewuser.setItems(User.loadlist());
     }
 
     public void listviewuserclicked(MouseEvent mouseEvent) {

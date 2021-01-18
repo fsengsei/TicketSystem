@@ -20,18 +20,17 @@ public class Status {
         return statiNummer + " - " + stati;
     }
 
-    public static ObservableList <Status> loadlist(){
+    public static ObservableList<Status> loadlist() {
         ObservableList<Status> list = FXCollections.observableArrayList();
-
 
         try {
             Connection Connection = AccesDB.getConnection();
-            Statement statement = null;
 
+            Statement statement = null;
             statement = Connection.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM stati");
 
-            while (results.next()){
+            while (results.next()) {
                 Status s = new Status();
                 s.stati = results.getString("name");
                 s.statiNummer = results.getString("status_id");
@@ -41,10 +40,8 @@ public class Status {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return list;
-
-
-
     }
 
     public static ObservableList<Status> loadStatusFile(String filename) {

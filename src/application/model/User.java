@@ -6,6 +6,10 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class User {
     public String usernumber;
@@ -19,41 +23,32 @@ public class User {
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
 
-    public static ObservableList<User> loadStatusFile(String filename) {
-        ObservableList<User> result = FXCollections.observableArrayList();
-        String s;
-        BufferedReader br = null;
+    public static ObservableList<User> loadlist() {
+        ObservableList<User> list = FXCollections.observableArrayList();
 
         try {
-            br = new BufferedReader(new FileReader("users.csv"));
-            try {
-                //br.readLine(); // ignoriere die erste Zeile => Überschriften
+            Connection Connection = AccesDB.getConnection();
 
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
+            Statement statement = null;
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM users");
 
-                    User a = new User();
-                    String[] words = s.split(";");
-                    a.usernumber = words[0];
-                    a.titel = words[1];
-                    a.name = words[2];
-                    a.adress = words[3];
-                    a.zip = words[4];
-                    a.city = words[5];
-                    a.abtnumber = words[6];
-
-
-
-                    result.add(a); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
+            while (results.next()) {
+                User u = new User();
+                u.name = results.getString("name");
+                u.usernumber = results.getString("user_id");
+                u.titel = results.getString("title");
+                u.adress = results.getString("adress");
+                u.zip = results.getString("zip");
+                u.city = results.getString("city");
+                u.abtnumber = results.getString("department_id");
+                list.add(u);
             }
-        } catch (IOException io) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        return result;
+        return list;
     }
 }
 
