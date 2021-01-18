@@ -21,7 +21,7 @@ public class AccesDB {
     public static Connection getConnection() {
         if (connection == null) {
             try {
-                connection = DriverManager.getConnection("jdbc:ucanaccess://E:/sew/3Ahitn/TicketSystem/db/ToDo AA_fsengsei.accdb");
+                connection = DriverManager.getConnection("jdbc:ucanaccess://db/ToDo AA_fsengsei.accdb");
             } catch (SQLException e) {
 
             }
