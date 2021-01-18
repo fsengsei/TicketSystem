@@ -17,7 +17,7 @@ public class DepartmentController {
     Department selectedDepartment = null;
 
     public void initialize() {
-        departmentList.setItems(Department.loadStatusFile("departments.csv"));
+        departmentList.setItems(Department.loadlist());
     }
 
     public void departmentListClicked(MouseEvent mouseEvent) {

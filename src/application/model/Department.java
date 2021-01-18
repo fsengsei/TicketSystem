@@ -6,6 +6,10 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Department {
     public String abteilungsNummer;
@@ -14,6 +18,35 @@ public class Department {
     @Override
     public String toString() {
         return abteilungsNummer + " - " + abteilungsName;
+    }
+
+    public static ObservableList <Department> loadlist(){
+        ObservableList<Department> list = FXCollections.observableArrayList();
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM departments");
+
+            while (results.next()){
+                Department d = new Department();
+                d.abteilungsName = results.getString("name");
+                d.abteilungsNummer = results.getString("department_id");
+                list.add(d);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return list;
+
+
+
     }
 
     public static ObservableList<Department> loadStatusFile(String filename) {

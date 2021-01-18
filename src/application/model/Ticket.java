@@ -6,6 +6,10 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Ticket {
     public String ID;
@@ -19,8 +23,39 @@ public class Ticket {
         return ID + "-" + Name;
     }
 
-    public String newCSVline(){
-        return  ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
+    public String newCSVline() {
+        return ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
+    }
+
+    public static ObservableList<Ticket> loadlist() {
+        ObservableList<Ticket> list = FXCollections.observableArrayList();
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM ticket");
+
+            while (results.next()) {
+                Ticket t = new Ticket();
+                t.Name = results.getString("name");
+                t.Beschreibung = results.getString("descreption");
+                application.model.Priority p = new Priority();
+                p.prioritaetsNummer = results.getString("priority_id");
+                Status status = new Status();
+                status.statiNummer = results.getString("status_id");
+                t.Priority = p;
+                t.Status = status;
+                t.ID = results.getString("ticket_id");
+                list.add(t);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public static ObservableList<Ticket> loadTicketfile(String filename) {
@@ -29,7 +64,7 @@ public class Ticket {
 
 
         try {
-            BufferedReader br  = new BufferedReader(new FileReader(filename));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             try {
                 //br.readLine(); // ignoriere die erste Zeile => Überschriften
 
@@ -41,7 +76,7 @@ public class Ticket {
                     a.ID = words[0];
                     a.Name = words[1];
                     a.Beschreibung = words[2];
-                    Status status  = new Status();
+                    Status status = new Status();
                     status.statiNummer = words[3];
                     a.Status = status;
                     application.model.Priority p = new Priority();

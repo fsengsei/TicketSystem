@@ -101,7 +101,7 @@ public class Controller {
     public void initialize() {
         filterstatuscombobox.setItems(Status.loadlist());
         filterprioritycombobox.setItems(Priority.loadlist());
-        ticket_ListView.setItems(Ticket.loadTicketfile("tickets.csv"));
+        ticket_ListView.setItems(Ticket.loadlist());
         allTickets = new ArrayList<>(ticket_ListView.getItems());
         list = FXCollections.observableArrayList(ticket_ListView.getItems());
     }

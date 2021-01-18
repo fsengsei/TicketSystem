@@ -26,7 +26,7 @@ public class UserController {
 
     public void initialize() {
         listviewuser.setItems(User.loadStatusFile("users.csv"));
-        departmentComboBox.setItems(Department.loadStatusFile("departments.csv"));
+        departmentComboBox.setItems(Department.loadlist());
     }
 
     public void listviewuserclicked(MouseEvent mouseEvent) {
