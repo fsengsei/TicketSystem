@@ -37,4 +37,11 @@ public class DepartmentController {
 
     public void saveOnClick(ActionEvent actionEvent) {
     }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        departmentTextField.clear();
+        departmentList.getItems().remove(selectedDepartment);
+
+        selectedDepartment.delete();
+    }
 }

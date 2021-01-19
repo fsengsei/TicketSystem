@@ -37,4 +37,11 @@ public class PriorityController {
 
     public void saveOnClick(ActionEvent actionEvent) {
     }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        priorityTextField.clear();
+        priorityList.getItems().remove(selectedPriority);
+
+        selectedPriority.delete();
+    }
 }

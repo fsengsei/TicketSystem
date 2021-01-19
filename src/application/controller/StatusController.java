@@ -37,4 +37,11 @@ public class StatusController {
 
     public void saveOnClick(ActionEvent actionEvent) {
     }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        statusTextField.clear();
+        listview.getItems().remove(selectedstatus);
+
+        selectedstatus.delete();
+    }
 }

@@ -20,6 +20,18 @@ public class Status {
         return statiNummer + " - " + stati;
     }
 
+    public void delete() {
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            statement.executeUpdate("DELETE FROM stati WHERE status_id = " + statiNummer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ObservableList<Status> loadlist() {
         ObservableList<Status> list = FXCollections.observableArrayList();
 
@@ -35,7 +47,6 @@ public class Status {
                 s.stati = results.getString("name");
                 s.statiNummer = results.getString("status_id");
                 list.add(s);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();

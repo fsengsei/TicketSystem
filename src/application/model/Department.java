@@ -20,9 +20,20 @@ public class Department {
         return abteilungsNummer + " - " + abteilungsName;
     }
 
+    public void delete() {
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            statement.executeUpdate("DELETE FROM departments WHERE ticket_id = " + abteilungsNummer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ObservableList <Department> loadlist(){
         ObservableList<Department> list = FXCollections.observableArrayList();
-
 
         try {
             Connection Connection = AccesDB.getConnection();
@@ -36,17 +47,12 @@ public class Department {
                 d.abteilungsName = results.getString("name");
                 d.abteilungsNummer = results.getString("department_id");
                 list.add(d);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-
         return list;
-
-
-
     }
 
     public static ObservableList<Department> loadStatusFile(String filename) {

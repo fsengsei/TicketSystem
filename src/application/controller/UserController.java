@@ -36,8 +36,6 @@ public class UserController {
         if (selected != null) {
             this.selecteduser = selected;
 
-
-
             nameTextField.setText(selected.name);
             titleTextField.setText(selected.titel);
             streetButton.setText(selected.adress);
@@ -50,8 +48,6 @@ public class UserController {
                     break;
                 }
             }
-
-
         }
     }
 
@@ -61,5 +57,17 @@ public class UserController {
     }
 
     public void saveOnClick(ActionEvent actionEvent) {
+    }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        nameTextField.clear();
+        titleTextField.clear();
+        ZipTextField.clear();
+        CityTextField.clear();
+        CountryTextField.clear();
+        streetButton.clear();
+        listviewuser.getItems().remove(selecteduser);
+
+        selecteduser.delete();
     }
 }

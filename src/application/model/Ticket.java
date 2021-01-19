@@ -27,9 +27,20 @@ public class Ticket {
         return ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
     }
 
+    public void delete() {
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            statement.executeUpdate("DELETE FROM ticket WHERE ticket_id = " + ID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ObservableList<Ticket> loadlist() {
         ObservableList<Ticket> list = FXCollections.observableArrayList();
-
 
         try {
             Connection Connection = AccesDB.getConnection();
@@ -50,7 +61,6 @@ public class Ticket {
                 t.Status = status;
                 t.ID = results.getString("ticket_id");
                 list.add(t);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +71,6 @@ public class Ticket {
     public static ObservableList<Ticket> loadTicketfile(String filename) {
         ObservableList<Ticket> result = FXCollections.observableArrayList();
         String s;
-
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));

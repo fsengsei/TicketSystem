@@ -3,9 +3,6 @@ package application.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +19,18 @@ public class User {
     public String abtname;
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
+
+    public void delete() {
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            statement.executeUpdate("DELETE FROM users WHERE user_id = " + usernumber);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static ObservableList<User> loadlist() {
         ObservableList<User> list = FXCollections.observableArrayList();

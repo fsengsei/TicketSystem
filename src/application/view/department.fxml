@@ -11,5 +11,6 @@
       <Button fx:id="closeButton" layoutX="458.0" layoutY="207.0" mnemonicParsing="false" onAction="#closeOnClick" text="Abbrechen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <TextField fx:id="departmentTextField" layoutX="223.0" layoutY="10.0" prefHeight="25.0" prefWidth="309.0" promptText="Abteilung" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0" />
       <ListView fx:id="departmentList" onMouseClicked="#departmentListClicked" prefHeight="246.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="223.0" layoutY="207.0" mnemonicParsing="false" onAction="#deleteClicked" text="Löschen" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="223.0" />
    </children>
 </AnchorPane>
