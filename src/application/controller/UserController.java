@@ -42,8 +42,8 @@ public class UserController {
             ZipTextField.setText(selected.zip);
             CityTextField.setText(selected.city);
             CountryTextField.setVisible(false);
-            for (Department d : departmentComboBox.getItems()){
-                if (d.abteilungsNummer.equals(selected.abtnumber)){
+            for (Department d : departmentComboBox.getItems()) {
+                if (d.abteilungsNummer.equals(selected.abtnumber)) {
                     departmentComboBox.getSelectionModel().select(d);
                     break;
                 }
@@ -57,7 +57,15 @@ public class UserController {
     }
 
     public void saveOnClick(ActionEvent actionEvent) {
+        if (selecteduser != null) {
+            selecteduser.name = nameTextField.getText();
+
+            listviewuser.refresh();
+
+            selecteduser.update();
+        }
     }
+
 
     public void deleteClicked(ActionEvent actionEvent) {
         nameTextField.clear();

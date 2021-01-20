@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Department {
     public String abteilungsNummer;
@@ -20,6 +17,24 @@ public class Department {
         return abteilungsNummer + " - " + abteilungsName;
     }
 
+    public void update () {
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            PreparedStatement statement = null;
+            statement = Connection.prepareStatement("UPDATE departments SET name = ? WHERE department_id = ?");
+            statement.setString(1, abteilungsName);
+            statement.setString(2,abteilungsNummer);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public void delete() {
         try {
             Connection Connection = AccesDB.getConnection();

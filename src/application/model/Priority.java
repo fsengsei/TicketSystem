@@ -3,6 +3,7 @@ package application.model;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.hsqldb.index.IndexAVLMemory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,6 +29,25 @@ public class Priority {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void update () {
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            PreparedStatement statement = null;
+            statement = Connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
+            statement.setString(1, prioritaetsText);
+            statement.setString(2,prioritaetsNummer);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public static ObservableList<Priority> loadlist() {

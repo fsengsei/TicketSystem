@@ -3,10 +3,7 @@ package application.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class User {
     public String usernumber;
@@ -20,6 +17,27 @@ public class User {
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
 
+    public void update () {
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            PreparedStatement statement = null;
+            statement = Connection.prepareStatement("UPDATE users SET name = ? WHERE street = ? Where city = ? WHERE department = ?");
+            statement.setString(1, name);
+            statement.setString(2,adress);
+            statement.setString(3, zip);
+            statement.setString(4, city);
+            statement.setString(5,abtnumber);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public void delete() {
         try {
             Connection Connection = AccesDB.getConnection();

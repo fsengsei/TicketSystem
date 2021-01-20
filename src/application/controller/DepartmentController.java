@@ -36,6 +36,13 @@ public class DepartmentController {
     }
 
     public void saveOnClick(ActionEvent actionEvent) {
+        if (selectedDepartment != null){
+            selectedDepartment.abteilungsName = departmentTextField.getText();
+
+            departmentList.refresh();
+
+            selectedDepartment.update();
+        }
     }
 
     public void deleteClicked(ActionEvent actionEvent) {

@@ -36,7 +36,15 @@ public class PriorityController {
     }
 
     public void saveOnClick(ActionEvent actionEvent) {
-    }
+        if (selectedPriority != null){
+            selectedPriority.prioritaetsText = priorityTextField.getText();
+
+            priorityList.refresh();
+
+            selectedPriority.update();
+        }
+        }
+
 
     public void deleteClicked(ActionEvent actionEvent) {
         priorityTextField.clear();

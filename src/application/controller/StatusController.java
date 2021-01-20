@@ -36,6 +36,13 @@ public class StatusController {
     }
 
     public void saveOnClick(ActionEvent actionEvent) {
+        if (selectedstatus != null){
+            selectedstatus.stati = statusTextField.getText();
+
+            listview.refresh();
+
+            selectedstatus.update();
+        }
     }
 
     public void deleteClicked(ActionEvent actionEvent) {

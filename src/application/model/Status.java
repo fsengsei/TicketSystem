@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Status {
     public String statiNummer;
@@ -18,6 +15,25 @@ public class Status {
     @Override
     public String toString() {
         return statiNummer + " - " + stati;
+    }
+
+    public void update () {
+
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+            PreparedStatement statement = null;
+            statement = Connection.prepareStatement("UPDATE stati SET status_id = ? WHERE name = ?");
+            statement.setString(1, statiNummer);
+            statement.setString(2,stati);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void delete() {
