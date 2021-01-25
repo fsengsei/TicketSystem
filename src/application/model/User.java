@@ -12,6 +12,7 @@ public class User {
     public String adress;
     public String zip;
     public String city;
+    public Department Abteilung;
     public String abtnumber;
     public String abtname;
 
@@ -68,7 +69,7 @@ public class User {
                 u.adress = results.getString("adress");
                 u.zip = results.getString("zip");
                 u.city = results.getString("city");
-                u.abtnumber = results.getString("department_id");
+                u.Abteilung = Department.getById(results.getInt("department_id"));
                 list.add(u);
             }
         } catch (SQLException e) {
