@@ -17,27 +17,50 @@ public class User {
 
     public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
 
+    public static User getById (int id) {
+        User u = null;
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+
+            Statement statement = null;
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM users WHERE user_id = " + id);
+
+            if (results.next()) {
+                u = new User();
+                u.name = results.getString("name");
+                u.usernumber = results.getString("user_id");
+                u.adress = results.getString("street");
+                u.zip = results.getString("zip");
+                u.city = results.getString("city");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return u;
+    }
+
     public void update () {
-
-
         try {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE users SET name = ? WHERE street = ? Where city = ? WHERE department = ?");
             statement.setString(1, name);
-            statement.setString(2,adress);
+            statement.setString(2, adress);
             statement.setString(3, zip);
             statement.setString(4, city);
-            statement.setString(5,abtnumber);
+            statement.setString(5, abtnumber);
 
             statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
+
     public void delete() {
         try {
             Connection Connection = AccesDB.getConnection();
@@ -78,4 +101,3 @@ public class User {
         return list;
     }
 }
-

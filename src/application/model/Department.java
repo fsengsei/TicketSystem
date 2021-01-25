@@ -17,8 +17,8 @@ public class Department {
         return abteilungsNummer + " - " + abteilungsName;
     }
 
-    public static ObservableList<Department> getById (int id) {
-        ObservableList<Department> list = FXCollections.observableArrayList();
+    public static Department getById (int id) {
+        Department d = null;
 
         try {
             Connection Connection = AccesDB.getConnection();
@@ -27,17 +27,16 @@ public class Department {
             statement = Connection.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM departments WHERE department_id = " + id);
 
-            while (results.next()) {
-                Department d = new Department();
+            if (results.next()) {
+                d = new Department();
                 d.abteilungsName = results.getString("name");
                 d.abteilungsNummer = results.getString("department_id");
-                list.add(d);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return list;
+        return d;
     }
 
     public void update() {
