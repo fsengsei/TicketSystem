@@ -38,7 +38,7 @@ public class Ticket {
             ResultSet results = statement.executeQuery("SELECT * FROM ticket WHERE ticket_id = " + id);
 
             if (results.next()) {
-                 t = new Ticket();
+                t = new Ticket();
                 t.Name = results.getString("name");
                 t.ID = results.getString("ticket_id");
                 t.Beschreibung = results.getString("descreption");
