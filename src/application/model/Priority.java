@@ -44,9 +44,7 @@ public class Priority {
                 // obj = new Status(results.getInt("stati_id"), results.getString("status"));
                 obj.prioritaetsText = results.getString("name");
                 obj.prioritaetsNummer = results.getString("priority_id");
-
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,12 +52,7 @@ public class Priority {
         return obj;
     }
 
-
-
-
     public void update() {
-
-
         try {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
@@ -72,8 +65,6 @@ public class Priority {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static ObservableList<Priority> loadlist() {
@@ -88,7 +79,7 @@ public class Priority {
 
             while (results.next()) {
                 Priority p = new Priority();
-            //    p = getbyid(Integer.parseInt(results.getInt("priority_id")));
+                // p = getbyid(Integer.parseInt(results.getInt("priority_id")));
                 p.prioritaetsText = results.getString("name");
                 p.prioritaetsNummer = results.getString("priority_id");
                 list.add(p);
@@ -99,6 +90,7 @@ public class Priority {
 
         return list;
     }
+
 
     public static ObservableList<Priority> loadPriorityFile(String filename) {
         ObservableList<Priority> result = FXCollections.observableArrayList();

@@ -44,7 +44,6 @@ public class Ticket {
                 t.Beschreibung = results.getString("descreption");
                 t.Status = application.model.Status.getById(results.getInt("status_id"));
                 t.Priority = application.model.Priority.getById(results.getInt("priority_id"));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
