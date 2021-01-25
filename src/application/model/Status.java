@@ -17,9 +17,30 @@ public class Status {
         return statiNummer + " - " + stati;
     }
 
+    public static ObservableList<Status> getById (int id) {
+        ObservableList<Status> list = FXCollections.observableArrayList();
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+
+            Statement statement = null;
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
+
+            while (results.next()) {
+                Status s = new Status();
+                s.stati = results.getString("name");
+                s.statiNummer = results.getString("status_id");
+                list.add(s);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
     public void update () {
-
-
         try {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
@@ -32,8 +53,6 @@ public class Status {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void delete() {

@@ -27,6 +27,32 @@ public class Ticket {
         return ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
     }
 
+    public static ObservableList<Ticket> getById (int id) {
+        ObservableList<Ticket> list = FXCollections.observableArrayList();
+
+        try {
+            Connection Connection = AccesDB.getConnection();
+
+            Statement statement = null;
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM ticket WHERE ticket_id = " + id);
+
+            while (results.next()) {
+                Ticket t = new Ticket();
+                t.Name = results.getString("name");
+                t.ID = results.getString("ticket_id");
+                t.Beschreibung = results.getString("descreption");
+                t.Status = results.getString("status_id");
+                t.Priority = results.getString("priority_id");
+                list.add(t);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
     public void delete() {
         try {
             Connection Connection = AccesDB.getConnection();
