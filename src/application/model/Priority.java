@@ -31,7 +31,7 @@ public class Priority {
         }
     }
 
-    public static Priority getbyid(int id) {
+    public static Priority getById(int id) {
         Priority obj = null;
         try {
             Connection Connection = AccesDB.getConnection();
@@ -40,6 +40,7 @@ public class Priority {
             statement = Connection.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM priorities WHERE  id=" + id);
             if (results.next()) {
+                obj = new Priority();
                 // obj = new Status(results.getInt("stati_id"), results.getString("status"));
                 obj.prioritaetsText = results.getString("name");
                 obj.prioritaetsNummer = results.getString("priority_id");
@@ -87,7 +88,9 @@ public class Priority {
 
             while (results.next()) {
                 Priority p = new Priority();
-                p = getbyid(Integer.parseInt(results.getInt("priority_id")));
+            //    p = getbyid(Integer.parseInt(results.getInt("priority_id")));
+                p.prioritaetsText = results.getString("name");
+                p.prioritaetsNummer = results.getString("priority_id");
                 list.add(p);
             }
         } catch (SQLException e) {
