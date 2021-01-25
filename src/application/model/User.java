@@ -23,12 +23,11 @@ public class User {
         try {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
-            statement = Connection.prepareStatement("UPDATE users SET name = ? WHERE street = ? Where city = ? WHERE department = ?");
+            statement = Connection.prepareStatement("UPDATE users SET name = ?, street = ?, city = ?, department = ? ");
             statement.setString(1, name);
             statement.setString(2,adress);
             statement.setString(3, zip);
-            statement.setString(4, city);
-            statement.setString(5,abtnumber);
+            statement.setString(4,abtnumber);
 
             statement.executeUpdate();
 

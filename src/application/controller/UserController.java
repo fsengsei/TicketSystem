@@ -59,6 +59,10 @@ public class UserController {
     public void saveOnClick(ActionEvent actionEvent) {
         if (selecteduser != null) {
             selecteduser.name = nameTextField.getText();
+            selecteduser.adress = streetButton.getText();
+            selecteduser.city = CityTextField.getText();
+            selecteduser.zip = ZipTextField.getText();
+
 
             listviewuser.refresh();
 

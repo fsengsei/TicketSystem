@@ -31,7 +31,32 @@ public class Priority {
         }
     }
 
-    public void update () {
+    public static Priority getbyid(int id) {
+        Priority obj = null;
+        try {
+            Connection Connection = AccesDB.getConnection();
+            Statement statement = null;
+
+            statement = Connection.createStatement();
+            ResultSet results = statement.executeQuery("SELECT * FROM priorities WHERE  id=" + id);
+            if (results.next()) {
+                // obj = new Status(results.getInt("stati_id"), results.getString("status"));
+                obj.prioritaetsText = results.getString("name");
+                obj.prioritaetsNummer = results.getString("priority_id");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
+
+
+
+    public void update() {
 
 
         try {
@@ -39,7 +64,7 @@ public class Priority {
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
             statement.setString(1, prioritaetsText);
-            statement.setString(2,prioritaetsNummer);
+            statement.setString(2, prioritaetsNummer);
 
             statement.executeUpdate();
 
@@ -62,8 +87,7 @@ public class Priority {
 
             while (results.next()) {
                 Priority p = new Priority();
-                p.prioritaetsText = results.getString("name");
-                p.prioritaetsNummer = results.getString("priority_id");
+                p = getbyid(Integer.parseInt(results.getInt("priority_id")));
                 list.add(p);
             }
         } catch (SQLException e) {
