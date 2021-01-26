@@ -9,9 +9,18 @@ import java.io.IOException;
 import java.sql.*;
 
 public class Status {
-    public String statiNummer;
+    public Integer statiNummer;
     public String stati;
 
+    public Status(int statusid, String statusname) {
+        this.stati = statusname;
+        this.statiNummer = statusid;
+
+    }
+    public Status(){
+        this.stati = "";
+        this.statiNummer = 0;
+    }
     @Override
     public String toString() {
         return statiNummer + " - " + stati;
@@ -28,10 +37,9 @@ public class Status {
             ResultSet results = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
 
             if (results.next()) {
-                s = new Status();
-                s.stati = results.getString("name");
-                s.statiNummer = results.getString("status_id");
-
+                s = new Status(
+                        results.getInt("status_id"),
+                        results.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,7 +53,7 @@ public class Status {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE stati SET status_id = ? WHERE name = ?");
-            statement.setString(1, statiNummer);
+            statement.setInt(1, statiNummer);
             statement.setString(2,stati);
 
             statement.executeUpdate();
@@ -80,7 +88,7 @@ public class Status {
             while (results.next()) {
                 Status s = new Status();
                 s.stati = results.getString("name");
-                s.statiNummer = results.getString("status_id");
+                s.statiNummer = results.getInt("status_id");
                 list.add(s);
             }
         } catch (SQLException e) {
@@ -106,7 +114,7 @@ public class Status {
                     Status a = new Status();
 
                     String[] words = s.split(";");
-                    a.statiNummer = words[0];
+                    a.statiNummer = Integer.parseInt(words[0]);
                     a.stati = words[1];
 
                     result.add(a); // füge Artikel zur Liste hinzu

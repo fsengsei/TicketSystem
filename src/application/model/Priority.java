@@ -11,8 +11,19 @@ import java.io.IOException;
 import java.sql.*;
 
 public class Priority {
-    public String prioritaetsNummer;
+    public Integer prioritaetsNummer;
     public String prioritaetsText;
+
+
+    public Priority(int prioritaetsNummer, String prioritaetsText) {
+        this.prioritaetsText =prioritaetsText;
+        this.prioritaetsNummer = prioritaetsNummer;
+
+    }
+    public Priority(){
+        this.prioritaetsText = "";
+        this.prioritaetsNummer = 0;
+    }
 
     @Override
     public String toString() {
@@ -38,12 +49,14 @@ public class Priority {
             Statement statement = null;
 
             statement = Connection.createStatement();
-            ResultSet results = statement.executeQuery("SELECT * FROM priorities WHERE  id=" + id);
+            ResultSet results = statement.executeQuery("SELECT * FROM priorities WHERE priority_id=" + id);
             if (results.next()) {
-                obj = new Priority();
-                // obj = new Status(results.getInt("stati_id"), results.getString("status"));
-                obj.prioritaetsText = results.getString("name");
-                obj.prioritaetsNummer = results.getString("priority_id");
+                obj = new Priority(
+                        results.getInt("priority_id"),
+                        results.getString("name"));
+
+
+
 
             }
 
@@ -55,8 +68,6 @@ public class Priority {
     }
 
 
-
-
     public void update() {
 
 
@@ -65,7 +76,7 @@ public class Priority {
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
             statement.setString(1, prioritaetsText);
-            statement.setString(2, prioritaetsNummer);
+            statement.setInt(2, prioritaetsNummer);
 
             statement.executeUpdate();
 
@@ -88,9 +99,9 @@ public class Priority {
 
             while (results.next()) {
                 Priority p = new Priority();
-            //    p = getbyid(Integer.parseInt(results.getInt("priority_id")));
+                //    p = getbyid(Integer.parseInt(results.getInt("priority_id")));
                 p.prioritaetsText = results.getString("name");
-                p.prioritaetsNummer = results.getString("priority_id");
+                p.prioritaetsNummer = results.getInt("priority_id");
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -115,7 +126,7 @@ public class Priority {
                     Priority a = new Priority();
 
                     String[] words = s.split(";");
-                    a.prioritaetsNummer = words[0];
+                    a.prioritaetsNummer = Integer.parseInt(words[0]);
                     a.prioritaetsText = words[1];
 
                     result.add(a); // füge Artikel zur Liste hinzu

@@ -9,9 +9,20 @@ import java.io.IOException;
 import java.sql.*;
 
 public class Department {
-    public String abteilungsNummer;
+    public Integer abteilungsNummer;
     public String abteilungsName;
 
+
+
+    public Department(int depid) {
+        this.abteilungsName = Department.getById(depid).abteilungsName;
+        this.abteilungsNummer = depid;
+
+    }
+    public Department(){
+        this.abteilungsName = "";
+        this.abteilungsNummer = 0;
+    }
     @Override
     public String toString() {
         return abteilungsNummer + " - " + abteilungsName;
@@ -30,7 +41,7 @@ public class Department {
             while (results.next()) {
                 d = new Department();
                 d.abteilungsName = results.getString("name");
-                d.abteilungsNummer = results.getString("department_id");
+                d.abteilungsNummer = results.getInt("department_id");
 
             }
         } catch (SQLException e) {
@@ -46,7 +57,7 @@ public class Department {
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE departments SET name = ? WHERE department_id = ?");
             statement.setString(1, abteilungsName);
-            statement.setString(2, abteilungsNummer);
+            statement.setInt(2, abteilungsNummer);
 
             statement.executeUpdate();
 
@@ -80,7 +91,7 @@ public class Department {
             while (results.next()) {
                 Department d = new Department();
                 d.abteilungsName = results.getString("name");
-                d.abteilungsNummer = results.getString("department_id");
+                d.abteilungsNummer = results.getInt("department_id");
                 list.add(d);
             }
         } catch (SQLException e) {

@@ -6,19 +6,32 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class User {
-    public String usernumber;
+    public Integer usernumber;
     public String titel;
     public String name;
     public String adress;
-    public String zip;
+    public Integer zip;
     public String city;
     public Department Abteilung;
     public String abtnumber;
     public String abtname;
 
-    public String toString() { return usernumber + "-" + name + "-" + abtnumber; }
+    public String toString() {
+        return usernumber + "-" + name + "-" + abtnumber;
+    }
 
-    public static User getById (int id) {
+    public User(int id, String title, String name, String street, int zip, String city, int departmentId) {
+        this.usernumber = id;
+        this.titel = title;
+        this.name = name;
+        this.adress = street;
+        this.zip = zip;
+        this.city = city;
+
+        this.Abteilung = Department.getById(departmentId);
+    }
+
+    public static User getById(int id) {
         User u = null;
 
         try {
@@ -29,12 +42,13 @@ public class User {
             ResultSet results = statement.executeQuery("SELECT * FROM users WHERE user_id = " + id);
 
             if (results.next()) {
-                u = new User();
-                u.name = results.getString("name");
-                u.usernumber = results.getString("user_id");
-                u.adress = results.getString("street");
-                u.zip = results.getString("zip");
-                u.city = results.getString("city");
+                 u = new User(results.getInt("user_id"),
+                        results.getString("title"),
+                        results.getString("name"),
+                        results.getString("adress"),
+                        results.getInt("zip"),
+                        results.getString("city"),
+                        results.getInt("department_id"));
 
             }
         } catch (SQLException e) {
@@ -44,14 +58,14 @@ public class User {
         return u;
     }
 
-    public void update () {
+    public void update() {
         try {
             Connection Connection = AccesDB.getConnection();
             PreparedStatement statement = null;
             statement = Connection.prepareStatement("UPDATE users SET name = ? WHERE street = ? Where city = ? WHERE department = ?");
             statement.setString(1, name);
             statement.setString(2, adress);
-            statement.setString(3, zip);
+            statement.setInt(3, zip);
             statement.setString(4, city);
             statement.setString(5, abtnumber);
 
@@ -85,15 +99,15 @@ public class User {
             ResultSet results = statement.executeQuery("SELECT * FROM users");
 
             while (results.next()) {
-                User u = new User();
-                u.name = results.getString("name");
-                u.usernumber = results.getString("user_id");
-                u.titel = results.getString("title");
-                u.adress = results.getString("adress");
-                u.zip = results.getString("zip");
-                u.city = results.getString("city");
-                u.Abteilung = Department.getById(results.getInt("department_id"));
+                User u = new User(results.getInt("user_id"),
+                        results.getString("title"),
+                        results.getString("name"),
+                        results.getString("adress"),
+                        results.getInt("zip"),
+                        results.getString("city"),
+                        results.getInt("department_id"));
                 list.add(u);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

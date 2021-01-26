@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Ticket {
-    public String ID;
+    public Integer ID;
     public String Name;
     public String Beschreibung;
     public Status Status;
@@ -23,11 +23,30 @@ public class Ticket {
         return ID + "-" + Name;
     }
 
+    public Ticket(int id, String name, String desc, int priorityId, int statusid) {
+        if (statusid != 0 && priorityId != 0){
+            this.ID = id;
+            this.Name = name;
+            this.Beschreibung = desc;
+            this.Status = application.model.Status.getById(statusid);
+            this.Priority = application.model.Priority.getById(priorityId);
+        }
+
+
+    }
+    public Ticket(){
+        this.ID = 0;
+        this.Name = "";
+        this.Beschreibung = "";
+        this.Priority = new Priority();
+        this.Status = new Status();
+    }
+
     public String newCSVline() {
         return ID + ";" + Name + ";" + Beschreibung + ";" + Status.statiNummer + ";" + Priority.prioritaetsNummer;
     }
 
-    public static Ticket getById (int id) {
+    public static Ticket getById(int id) {
         Ticket t = null;
 
         try {
@@ -38,12 +57,12 @@ public class Ticket {
             ResultSet results = statement.executeQuery("SELECT * FROM ticket WHERE ticket_id = " + id);
 
             if (results.next()) {
-                t = new Ticket();
-                t.Name = results.getString("name");
-                t.ID = results.getString("ticket_id");
-                t.Beschreibung = results.getString("descreption");
-                t.Status = application.model.Status.getById(results.getInt("status_id"));
-                t.Priority = application.model.Priority.getById(results.getInt("priority_id"));
+                t = new Ticket(results.getInt("ticket_id"),
+                        results.getString("name"),
+                        results.getString("descreption"),
+                        results.getInt("status_id"),
+                        results.getInt("priority_id"));
+
 
             }
         } catch (SQLException e) {
@@ -76,16 +95,12 @@ public class Ticket {
             ResultSet results = statement.executeQuery("SELECT * FROM ticket");
 
             while (results.next()) {
-                Ticket t = new Ticket();
-                t.Name = results.getString("name");
-                t.Beschreibung = results.getString("descreption");
-                application.model.Priority p = new Priority();
-                p.prioritaetsNummer = results.getString("priority_id");
-                Status status = new Status();
-                status.statiNummer = results.getString("status_id");
-                t.Priority = p;
-                t.Status = status;
-                t.ID = results.getString("ticket_id");
+                Ticket t = new Ticket(results.getInt("ticket_id"),
+                        results.getString("name"),
+                        results.getString("descreption"),
+                        results.getInt("priority_id"),
+                        results.getInt("status_id"));
+
                 list.add(t);
             }
         } catch (SQLException e) {
@@ -94,7 +109,9 @@ public class Ticket {
         return list;
     }
 
-    public static ObservableList<Ticket> loadTicketfile(String filename) {
+   /*
+   public static ObservableList<Ticket> loadTicketfile(String filename) {
+
         ObservableList<Ticket> result = FXCollections.observableArrayList();
         String s;
 
@@ -108,14 +125,14 @@ public class Ticket {
                     Ticket a = new Ticket();
 
                     String[] words = s.split(";");
-                    a.ID = words[0];
+                    a.ID = Integer.parseInt(words[0]);
                     a.Name = words[1];
                     a.Beschreibung = words[2];
                     Status status = new Status();
-                    status.statiNummer = words[3];
+                    status.statiNummer = Integer.parseInt(words[3]);
                     a.Status = status;
                     application.model.Priority p = new Priority();
-                    p.prioritaetsNummer = words[4];
+                    p.prioritaetsNummer = Integer.parseInt(words[4]);
                     a.Priority = p;
 
                     result.add(a); // füge Artikel zur Liste hinzu
@@ -130,4 +147,5 @@ public class Ticket {
 
         return result;
     }
+    */
 }

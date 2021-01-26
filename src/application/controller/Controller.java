@@ -90,7 +90,7 @@ public class Controller {
 
         if (selected != null) {
             controller.nameTextField.setText(selected.Name);
-            controller.Idfield.setText(selected.ID);
+            controller.Idfield.setText(selected.ID.toString());
             controller.DescTextField.setText(selected.Beschreibung);
         }
 
@@ -128,7 +128,7 @@ public class Controller {
         if (selected != null) {
             System.out.println("Tickets aktualisert");
             selected.Name = active.nameTextField.getText();
-            selected.ID = active.Idfield.getText();
+            selected.ID = Integer.parseInt(active.Idfield.getText());
             selected.Beschreibung = active.DescTextField.getText();
             selected.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
             selected.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;
@@ -141,7 +141,7 @@ public class Controller {
             System.out.println("Neues Ticket");
 
             t.Name = active.nameTextField.getText();
-            t.ID = active.Idfield.getText();
+            t.ID = Integer.parseInt(active.Idfield.getText());
             t.Beschreibung = active.DescTextField.getText();
             t.Status.statiNummer = active.status_idComboBox.getSelectionModel().getSelectedItem().statiNummer;
             t.Priority.prioritaetsNummer = active.priority_idComboBox.getSelectionModel().getSelectedItem().prioritaetsNummer;

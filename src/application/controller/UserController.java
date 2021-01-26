@@ -39,7 +39,7 @@ public class UserController {
             nameTextField.setText(selected.name);
             titleTextField.setText(selected.titel);
             streetButton.setText(selected.adress);
-            ZipTextField.setText(selected.zip);
+            ZipTextField.setText(selected.zip.toString());
             CityTextField.setText(selected.city);
             CountryTextField.setVisible(false);
             for (Department d : departmentComboBox.getItems()) {
@@ -61,7 +61,7 @@ public class UserController {
             selecteduser.name = nameTextField.getText();
             selecteduser.adress = streetButton.getText();
             selecteduser.city = CityTextField.getText();
-            selecteduser.zip = ZipTextField.getText();
+            selecteduser.zip = Integer.parseInt(ZipTextField.getText());
 
 
             listviewuser.refresh();

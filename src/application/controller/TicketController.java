@@ -56,7 +56,7 @@ public class TicketController {
     public Ticket getTicket() {
         /** Aktualisieren der Ticket - Daten */
         ticket.Name = nameTextField.getText();
-        ticket.ID = Idfield.getText();
+        ticket.ID = Integer.parseInt(Idfield.getText());
         ticket.Beschreibung = DescTextField.getText();
         ticket.Status = status_idComboBox.getSelectionModel().getSelectedItem();
         ticket.Priority = priority_idComboBox.getSelectionModel().getSelectedItem();
