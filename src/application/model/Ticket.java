@@ -17,19 +17,23 @@ public class Ticket {
     public String Beschreibung;
     public Status Status;
     public Priority Priority;
+    public ObservableList<User> AllUser = FXCollections.observableArrayList();
+    public User user;
+    public ObservableList<User> userslist = FXCollections.observableArrayList();
 
     @Override
     public String toString() {
         return ID + "-" + Name;
     }
 
-    public Ticket(int id, String name, String desc, int priorityId, int statusid) {
+    public Ticket(int id, String name, String desc, int priorityId, int statusid, int userid, ObservableList<User> userlist) {
         if (statusid != 0 && priorityId != 0){
             this.ID = id;
             this.Name = name;
             this.Beschreibung = desc;
             this.Status = application.model.Status.getById(statusid);
             this.Priority = application.model.Priority.getById(priorityId);
+            this.userslist = userlist;
         }
 
 
@@ -61,7 +65,9 @@ public class Ticket {
                         results.getString("name"),
                         results.getString("descreption"),
                         results.getInt("status_id"),
-                        results.getInt("priority_id"));
+                        results.getInt("priority_id"),
+                        results.getInt("user_id"),
+                        userToTickets(id));
 
 
             }
@@ -70,6 +76,25 @@ public class Ticket {
         }
 
         return t;
+    }
+
+    public static ObservableList<User> userToTickets(int id){
+        ObservableList<User> userList = FXCollections.observableArrayList();
+        try {
+            Connection connection = AccesDB.getConnection();
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM user_to_ticket WHERE ticket_id = " +id);
+
+            while(result.next()){
+                userList.add(User.getById(result.getInt("user_id")));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return userList;
     }
 
     public void delete() {
@@ -99,7 +124,9 @@ public class Ticket {
                         results.getString("name"),
                         results.getString("descreption"),
                         results.getInt("priority_id"),
-                        results.getInt("status_id"));
+                        results.getInt("status_id"),
+                        results.getInt("user_id"),
+                        userToTickets(results.getInt("ticket_id")));
 
                 list.add(t);
             }

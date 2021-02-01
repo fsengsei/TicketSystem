@@ -16,8 +16,9 @@ public class User {
     public String abtnumber;
     public String abtname;
 
+
     public String toString() {
-        return usernumber + "-" + name + "-" + abtnumber;
+        return usernumber + "-" + name;
     }
 
     public User(int id, String title, String name, String street, int zip, String city, int departmentId) {
@@ -29,6 +30,7 @@ public class User {
         this.city = city;
 
         this.Abteilung = Department.getById(departmentId);
+
     }
 
     public static User getById(int id) {
@@ -57,6 +59,7 @@ public class User {
 
         return u;
     }
+
 
     public void update() {
         try {
